@@ -6,6 +6,7 @@
       :detail-drawer="detailDrawer"
       :header-actions="headerActions"
       :table-config="tableConfig"
+      :help-message="helpMessage"
     />
     <Dialog
       :title="$tc('Import')"
@@ -39,6 +40,7 @@ export default {
       return vm.$hasPerm('finances.delete_transaction')
     }
     return {
+      helpMessage: '',
       dialogImport: false,
       importFile: {},
       createDrawer: () => import('./TransactionCreateUpdate.vue'),
@@ -59,6 +61,9 @@ export default {
           ]
         },
         columnsMeta: {
+          amount: {
+            label: this.$t('Amount')
+          }
         }
       },
       headerActions: {
@@ -73,6 +78,24 @@ export default {
             can: () => vm.$hasPerm('finances.change_transaction'),
             callback: () => {
               this.dialogImport = true
+            }
+          },
+          {
+            name: this.$t('CalculateProfit'),
+            title: this.$t('CalculateProfit'),
+            can: () => vm.$hasPerm('finances.change_transaction'),
+            callback: () => {
+              const extraQuery = this.$refs.GenericListPage.$refs.ListTable.$refs.ListTable.extraQuery
+              const url = '/api/v1/finances/transactions/profit/' + '?' + new URLSearchParams(extraQuery).toString()
+              request({
+                url: url,
+                method: 'get'
+              }).then(res => {
+                vm.helpMessage = res.profit
+                this.$message.success(res.msg)
+              }).catch(err => {
+                this.$message.error(`Calculate profit failed ${err}`)
+              })
             }
           }
         ],

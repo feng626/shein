@@ -35,7 +35,20 @@ class TransactionViewSet(OrgBulkModelViewSet):
     rbac_perms = {
         'list': 'finances.view_transaction',
         'sync': 'finances.change_transaction',
+        'profit': 'finances.view_transaction',
     }
+
+    @action(methods=['get'], detail=False, url_path='profit')
+    def profit(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        profit = 0
+        product_cost_map = {str(_id): cost for _id, cost in Product.objects.values_list('id', 'cost')}
+
+        for product_id, amount, price in queryset.values_list('product_id', 'amount', 'price'):
+            profit += (price - product_cost_map[str(product_id)]) * amount
+
+        return Response(data={"msg": "Success", "profit": str(profit)}, status=status.HTTP_200_OK)
 
     @action(methods=['patch'], detail=False, url_path='sync')
     def sync(self, request, *args, **kwargs):

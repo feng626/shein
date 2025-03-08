@@ -14,7 +14,6 @@ class AuthSettingSerializer(serializers.Serializer):
     AUTH_LDAP_HA = serializers.BooleanField(required=False, label=_('LDAP Auth HA'))
     AUTH_CAS = serializers.BooleanField(required=False, label=_('CAS Auth'))
     AUTH_OPENID = serializers.BooleanField(required=False, label=_('OPENID Auth'))
-    AUTH_SAML2 = serializers.BooleanField(default=False, label=_("SAML2 Auth"))
     AUTH_OAUTH2 = serializers.BooleanField(default=False, label=_("OAuth2 Auth"))
     AUTH_RADIUS = serializers.BooleanField(required=False, label=_('RADIUS Auth'))
     AUTH_DINGTALK = serializers.BooleanField(default=False, label=_('DingTalk Auth'))

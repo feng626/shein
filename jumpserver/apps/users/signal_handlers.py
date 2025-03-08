@@ -10,7 +10,6 @@ from django_cas_ng.signals import cas_user_authenticated
 from authentication.backends.oauth2.signals import oauth2_create_or_update_user
 from authentication.backends.oidc.signals import openid_create_or_update_user
 from authentication.backends.radius.signals import radius_create_user
-from authentication.backends.saml2.signals import saml2_create_or_update_user
 from common.decorators import on_transaction_commit
 from common.signals import django_ready
 from common.utils import get_logger
@@ -125,12 +124,6 @@ def on_user_create(sender, user=None, **kwargs):
 def on_cas_user_authenticated(sender, user, created, **kwargs):
     source = user.Source.cas.value
     user_authenticated_handle(user, created, source)
-
-
-@receiver(saml2_create_or_update_user)
-def on_saml2_create_or_update_user(sender, user, created, attrs, **kwargs):
-    source = user.Source.saml2.value
-    user_authenticated_handle(user, created, source, attrs, **kwargs)
 
 
 @receiver(oauth2_create_or_update_user)

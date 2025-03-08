@@ -82,7 +82,7 @@ class Migration(migrations.Migration):
                 ('need_update_password', models.BooleanField(default=False, verbose_name='Need update password')),
                 ('source', models.CharField(
                     choices=[('local', 'Local'), ('ldap', 'LDAP/AD'), ('ldap_ha', 'LDAP/AD (HA)'), ('openid', 'OpenID'),
-                             ('radius', 'Radius'), ('cas', 'CAS'), ('saml2', 'SAML2'), ('oauth2', 'OAuth2'),
+                             ('radius', 'Radius'), ('cas', 'CAS'), ('oauth2', 'OAuth2'),
                              ('wecom', 'WeCom'), ('dingtalk', 'DingTalk'), ('feishu', 'FeiShu'), ('lark', 'Lark'),
                              ('slack', 'Slack'), ('custom', 'Custom')], default='local', max_length=30,
                     verbose_name='Source')),

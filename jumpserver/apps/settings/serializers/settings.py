@@ -9,7 +9,7 @@ from .auth import (
     CASSettingSerializer, RadiusSettingSerializer, FeiShuSettingSerializer,
     LarkSettingSerializer, WeComSettingSerializer, DingTalkSettingSerializer,
     AlibabaSMSSettingSerializer, TencentSMSSettingSerializer, CMPP2SMSSettingSerializer,
-    AuthSettingSerializer, SAML2SettingSerializer, OAuth2SettingSerializer, PasskeySettingSerializer,
+    AuthSettingSerializer, OAuth2SettingSerializer, PasskeySettingSerializer,
     CustomSMSSettingSerializer,
 )
 from .basic import BasicSettingSerializer
@@ -80,7 +80,6 @@ class SettingsSerializer(
     EmailContentSettingSerializer,
     OtherSettingSerializer,
     OIDCSettingSerializer,
-    SAML2SettingSerializer,
     OAuth2SettingSerializer,
     KeycloakSettingSerializer,
     CASSettingSerializer,

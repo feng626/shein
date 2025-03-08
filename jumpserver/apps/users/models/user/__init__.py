@@ -180,9 +180,8 @@ class User(
 
     def is_password_authenticate(self):
         cas = self.Source.cas
-        saml2 = self.Source.saml2
         oauth2 = self.Source.oauth2
-        return self.source not in [cas, saml2, oauth2]
+        return self.source not in [cas, oauth2]
 
     @property
     def expired_remain_days(self):

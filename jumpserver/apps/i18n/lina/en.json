@@ -50,7 +50,6 @@
     "AuthLimit": "Login restriction",
     "AuthSAMLCertHelpText": "Save after uploading the certificate key, then view sp metadata",
     "AuthSAMLKeyHelpText": "Sp certificates and keys are used for encrypted communication with idp",
-    "AuthSaml2UserAttrMapHelpText": "The keys on the left are saml2 user attributes, the values on the right are authentication platform user attributes",
     "AuthSecurity": "Auth security",
     "AuthSettings": "Authentication configuration",
     "AuthUserAttrMapHelpText": "The key on the left belongs to the jumpserver user properties, and the value on the right belongs to the authentication platform user properties",

@@ -50,7 +50,7 @@ class MFAMiddleware:
 
 
 class ThirdPartyLoginMiddleware(mixins.AuthMixin):
-    """OpenID、CAS、SAML2登录规则设置验证"""
+    """OpenID、CAS登录规则设置验证"""
 
     def __init__(self, get_response):
         self.get_response = get_response

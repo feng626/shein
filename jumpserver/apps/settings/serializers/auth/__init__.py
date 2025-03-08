@@ -9,7 +9,6 @@ from .oauth2 import *
 from .oidc import *
 from .passkey import *
 from .radius import *
-from .saml2 import *
 from .slack import *
 from .sms import *
 from .sso import *

@@ -61,13 +61,6 @@ class UserLoginContextMixin:
                 'auto_redirect': True
             },
             {
-                'name': 'SAML2',
-                'enabled': settings.AUTH_SAML2,
-                'url': f"{reverse('authentication:saml2:saml2-login')}?{query_string}",
-                'logo': static('img/login_saml2_logo.png'),
-                'auto_redirect': True
-            },
-            {
                 'name': settings.AUTH_OAUTH2_PROVIDER,
                 'enabled': settings.AUTH_OAUTH2,
                 'url': f"{reverse('authentication:oauth2:login')}?{query_string}",
@@ -359,8 +352,6 @@ class UserLogoutView(TemplateView):
             return settings.AUTH_OPENID_AUTH_LOGOUT_URL_NAME
         elif 'CAS' in backend:
             return settings.CAS_LOGOUT_URL_NAME
-        elif 'saml2' in backend:
-            return settings.SAML2_LOGOUT_URL_NAME
         elif 'oauth2' in backend:
             return settings.AUTH_OAUTH2_LOGOUT_URL_NAME
         return None

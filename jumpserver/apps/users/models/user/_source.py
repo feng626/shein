@@ -14,7 +14,6 @@ class Source(models.TextChoices):
     openid = "openid", "OpenID"
     radius = "radius", "Radius"
     cas = "cas", "CAS"
-    saml2 = "saml2", "SAML2"
     oauth2 = "oauth2", "OAuth2"
     wecom = "wecom", _("WeCom")
     dingtalk = "dingtalk", _("DingTalk")
@@ -42,7 +41,6 @@ class SourceMixin:
         ],
         Source.radius: [settings.AUTH_BACKEND_RADIUS],
         Source.cas: [settings.AUTH_BACKEND_CAS],
-        Source.saml2: [settings.AUTH_BACKEND_SAML2],
         Source.oauth2: [settings.AUTH_BACKEND_OAUTH2],
         Source.wecom: [settings.AUTH_BACKEND_WECOM],
         Source.feishu: [settings.AUTH_BACKEND_FEISHU],
@@ -61,7 +59,6 @@ class SourceMixin:
             cls.Source.openid: settings.AUTH_OPENID,
             cls.Source.radius: settings.AUTH_RADIUS,
             cls.Source.cas: settings.AUTH_CAS,
-            cls.Source.saml2: settings.AUTH_SAML2,
             cls.Source.oauth2: settings.AUTH_OAUTH2,
             cls.Source.wecom: settings.AUTH_WECOM,
             cls.Source.feishu: settings.AUTH_FEISHU,
